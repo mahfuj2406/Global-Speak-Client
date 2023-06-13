@@ -5,8 +5,8 @@ import { FaUser } from 'react-icons/fa';
 const NavBar = () => {
     const navOptions = <>
         <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/'}>Classes</Link></li>
-        <li><Link to={'/'}>Instructors</Link></li>
+        <li><Link to={'/classes'}>Classes</Link></li>
+        <li><Link to={'/instructors'}>Instructors</Link></li>
     </>
     return (
         <div className="w-full bg-violet-300">
@@ -30,8 +30,9 @@ const NavBar = () => {
                     </div>
                     <div className="navbar-end">
                     <ul className="menu menu-horizontal px-1">
+                        <li><a >Dashboard</a></li>
                         <li><a >Log out</a></li>
-                         <li><Link to={'/login'}>Login</Link></li>
+                        <li><Link to={'/login'}>Login</Link></li>
 
                     </ul>
                     <label className="btn btn-circle avatar bg-blue-700 hover:bg-slate-700 text-2xl" >
