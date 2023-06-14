@@ -33,26 +33,6 @@ const Dashboard = () => {
                             
                         </>
                     }
-                    {
-                        isInstructor && <>
-                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addClass"><LuBookPlus></LuBookPlus> Add a Class</NavLink></li>
-                            <li><NavLink to="/dashboard/myClasses"><ImBooks></ImBooks> My Classes</NavLink></li>
-                            
-                        </>
-                    }
-                    {
-                        isUser && <>
-                            <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/my-classes/enrolled"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            
-                        </>
-                    }
-
-
-
 
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
