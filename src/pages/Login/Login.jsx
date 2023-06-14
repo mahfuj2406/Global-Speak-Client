@@ -1,30 +1,27 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+    const { register, handleSubmit, reset } = useForm();
     const [error, setError] = useState("");
     // useTitle('Login');
     const { logIn, googleLogIn } = useAuth();
     // redirecting work 
     const location = useLocation();
-    const navigate = useNavigation();
+    const navigate = useNavigate();
 
-    const from =  '/';
+    const from = location.state?.from?.pathname ||  '/';
     console.log("location :" , location);
 
+    const onSubmit = data =>{
 
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        logIn(email, password)
+        logIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                form.reset();
+                reset();
                 console.log(user);
                 navigate(from, { replace: true })
             })
@@ -32,7 +29,10 @@ const Login = () => {
                 console.log(error.message);
                 setError(error.message)
             })
+
     }
+
+
     // google log in managed here
     const handleGoogleLogIn = () => {
         googleLogIn()
@@ -75,21 +75,21 @@ const Login = () => {
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <h1 className="text-3xl font-bold">Login now!</h1>
-                        <form onSubmit={handleLogin}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                                <input type="email" {...register("email", { required: true })} name='email' placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                                <input type="password" {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6 ">
-                                <button className="btn bg-violet-300 border-0 hover:border hover:bg-violet-600 hover:text-white">Login</button>
+                                <button type="submit" className="btn bg-violet-300 border-0 hover:border hover:bg-violet-600 hover:text-white">Login</button>
                             </div></form>
                         <p className='text-red-400 p-2'> {error}</p>
                         <p className='text-center m-2'>or</p>
