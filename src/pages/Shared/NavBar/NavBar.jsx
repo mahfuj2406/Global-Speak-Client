@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaUser } from 'react-icons/fa';
+import useAuth from "../../../hooks/useAuth";
 
 
 const NavBar = () => {
+    const { user, logOut } = useAuth();
     const navOptions = <>
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/classes'}>Classes</Link></li>
@@ -29,19 +31,24 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><a >Dashboard</a></li>
-                        <li><a >Log out</a></li>
-                        <li><Link to={'/login'}>Login</Link></li>
+                        {
+                            user ? <>
+                                <ul className="menu menu-horizontal px-1">
+                                    <li><a >Dashboard</a></li>
+                                    <li><a onClick={logOut}>Log out</a></li>
 
-                    </ul>
-                    <label className="btn btn-circle avatar bg-blue-700 hover:bg-slate-700 text-2xl" >
-                    <FaUser className='text-white'></FaUser>
-                        {/* {
+                                </ul>
+                                <label className="btn btn-circle avatar bg-blue-700 hover:bg-slate-700 text-2xl" >
+                                    <FaUser className='text-white'></FaUser>
+                                    {/* {
                             user ? <img className='rounded-full' src={user.photoURL} /> : <FontAwesomeIcon className='rounded-full' icon="fa-solid fa-user" />
                         } */}
-                    </label>
-                </div>
+                                </label></> : <ul className="menu menu-horizontal px-1">
+                                <li><Link to={'/login'}>Login</Link></li>
+                            </ul>
+                        }
+
+                    </div>
                 </div>
             </div>
         </div>
