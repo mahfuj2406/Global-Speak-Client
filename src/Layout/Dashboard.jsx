@@ -5,11 +5,14 @@ import { LuBookPlus } from "react-icons/lu";
 import { ImBooks } from "react-icons/im";
 import { BiSelectMultiple } from "react-icons/bi";
 import { IoIosAlbums } from "react-icons/io";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
 
+    // const [isAdmin] = useAdmin();
     const isAdmin = true;
+    console.log("is Admin state : ", isAdmin);
     const isUser = false;
     const isInstructor = false;
 
