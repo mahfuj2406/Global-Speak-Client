@@ -21,13 +21,13 @@ const Dashboard = () => {
                 <Outlet></Outlet>
 
             </div>
-            <div className="drawer-side bg-violet-300">
+            <div className="drawer-side bg-violet-300 pt-10">
+            <div className="divider">{isAdmin && "Admin"} {isInstructor && "Instructor"} {isUser && "User"} Dashboard</div>
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
 
                     {
                         isAdmin && <>
-                            <li><NavLink to="/dashboard/adminHome"><FaHome></FaHome> Admin Home</NavLink></li>
                             <li><NavLink to="/dashboard/allClasses"><GiBookshelf></GiBookshelf> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                             
@@ -35,7 +35,6 @@ const Dashboard = () => {
                     }
                     {
                         isInstructor && <>
-                            <li><NavLink to="/dashboard/instructorHome"><FaHome></FaHome> Instructor Home</NavLink></li>
                             <li><NavLink to="/dashboard/addClass"><LuBookPlus></LuBookPlus> Add a Class</NavLink></li>
                             <li><NavLink to="/dashboard/myClasses"><ImBooks></ImBooks> My Classes</NavLink></li>
                             
@@ -43,9 +42,8 @@ const Dashboard = () => {
                     }
                     {
                         isUser && <>
-                            <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
                             <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/my-classes/enrolled"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/my-enrolled-classes"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
                             <li><NavLink to="/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                             
                         </>
