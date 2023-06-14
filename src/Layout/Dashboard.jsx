@@ -41,6 +41,15 @@ const Dashboard = () => {
                             
                         </>
                     }
+                    {
+                        isUser && <>
+                            <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
+                            <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/my-classes/enrolled"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            
+                        </>
+                    }
 
 
                     <div className="divider"></div>
