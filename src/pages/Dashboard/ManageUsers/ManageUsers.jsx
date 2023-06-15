@@ -40,12 +40,12 @@ const [axiosSecure] = useAxiosSecure();
         })
     }
     return (
-        <div className='container mx-auto search-page py-20'>
+        <div className='container mx-auto search-page py-10'>
             <SectionTitle heading={"All Users"}></SectionTitle>
             <h1>Total users : {users.length}</h1>
 
             <div className="overflow-x-auto">
-                <table className="table table-xs table-pin-rows table-pin-cols border rounded-lg">
+                <table className="table table-pin-rows table-pin-cols">
                     <thead>
                         <tr className='text-md md:text-xl text-center'>
                             <td>#</td>
@@ -67,16 +67,16 @@ const [axiosSecure] = useAxiosSecure();
                                     <td className="text-md md:text-lg">{user.role}</td>
                                     <td className="text-md md:text-lg text-start"> {
                                         user.role === 'instructor' ? 
-                                        <button className="btn btn-ghost bg-violet-600 text-white" disabled>Make Instructor</button>
+                                        <button className="btn btn-ghost  btn-sm bg-violet-600 text-white" disabled>Make Instructor</button>
                                         :
-                                         <button onClick={() => roleChange( user , "instructor")} className="btn btn-ghost bg-violet-600 text-white">Make Instructor</button>
+                                         <button onClick={() => roleChange( user , "instructor")} className="btn btn-ghost  btn-sm bg-violet-600 text-white">Make Instructor</button>
                                     } </td>
 
                                     <td className="text-md md:text-lg text-start"> {
                                         user.role === 'admin' ? 
-                                        <button className="btn btn-ghost bg-violet-600 text-white" disabled>Make Admin</button>
+                                        <button className="btn btn-ghost btn-sm bg-violet-600 text-white" disabled>Make Admin</button>
                                         :
-                                         <button onClick={() => roleChange( user , "admin")} className="btn btn-ghost bg-violet-600 text-white">Make Admin</button>
+                                         <button onClick={() => roleChange( user , "admin")} className="btn btn-ghost btn-sm bg-violet-600 text-white">Make Admin</button>
                                     } </td>
 
                                 </tr>)
