@@ -10,9 +10,9 @@ import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import MySelectedClasses from "../pages/Dashboard/Users/MySelectedClasses/MySelectedClasses";
 import MyEnrolledClasses from "../pages/Dashboard/Users/MyEnrolledClasses/MyEnrolledClasses";
-import Payments from "../pages/Dashboard/Users/Payments/Payments";
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
+import Payment from "../pages/Dashboard/Users/Pyaments/Payment";
 
 const router = createBrowserRouter([
     {
@@ -62,8 +62,8 @@ const router = createBrowserRouter([
           element: <MyEnrolledClasses></MyEnrolledClasses>
         },
         {
-          path: 'paymentHistory',
-          element: <Payments></Payments>
+          path: 'payment',
+          element: <Payment></Payment>
         },
         {
           path: 'addClass',
