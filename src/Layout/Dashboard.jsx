@@ -9,11 +9,11 @@ import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
-    // const isAdmin = false;
-    const [isAdmin] = useAdmin();
-    console.log("is Admin state : ", isAdmin);
+    const isAdmin = false;
+    // const [isAdmin] = useAdmin();
+    // console.log("is Admin state : ", isAdmin);
     const isUser = false;
-    const isInstructor = false;
+    const isInstructor = true;
 
     return (
         <div className="drawer drawer-mobile md:drawer-open">
