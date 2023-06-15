@@ -41,7 +41,7 @@ const Login = () => {
                 console.log(user); 
                 const newUser = { name: user.displayName? user.displayName :"", email: user.email, photoUrl: user.photoURL, role: "user" }
                 console.log("new User :", newUser);
-                fetch('https://global-speak-server.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

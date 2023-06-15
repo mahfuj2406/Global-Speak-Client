@@ -29,21 +29,19 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80">
 
                     {
-                        isAdmin && <>
+                        isAdmin ? <>
                             <li><NavLink to="/dashboard/allClasses"><GiBookshelf></GiBookshelf> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                             
                         </>
-                    }
-                    {
-                        isInstructor && <>
+                        :
+                        isInstructor ? <>
                             <li><NavLink to="/dashboard/addClass"><LuBookPlus></LuBookPlus> Add a Class</NavLink></li>
                             <li><NavLink to="/dashboard/myClasses"><ImBooks></ImBooks> My Classes</NavLink></li>
                             
                         </>
-                    }
-                    {
-                        isUser && <>
+                        : 
+                        <>
                             <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/my-enrolled-classes"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
                             <li><NavLink to="/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
