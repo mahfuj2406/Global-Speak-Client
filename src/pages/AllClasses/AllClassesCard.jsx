@@ -6,6 +6,7 @@ import useAdmin from '../../hooks/useAdmin';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import useInstructor from '../../hooks/useInstructor';
+import { Fade } from 'react-awesome-reveal';
 
 const AllClassesCard = ({ Class }) => {
     const { user } = useAuth();
@@ -67,6 +68,10 @@ const AllClassesCard = ({ Class }) => {
     return (
         <div className="card card-compact bg-base-100 shadow-xl relative">
             <figure><img src={classImageURL}  /></figure>
+            <Fade 
+            direction='down'
+            duration={1000}
+            >
             <div className="card-body">
                 <h2 className="card-title">{className}</h2>
                 <p>{instructorName}</p>
@@ -87,6 +92,7 @@ const AllClassesCard = ({ Class }) => {
                   >Enrol Now</button>
                 </div>
             </div>
+            </Fade>
         </div>
     );
 };

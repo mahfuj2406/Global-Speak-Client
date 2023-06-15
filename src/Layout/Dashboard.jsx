@@ -6,14 +6,14 @@ import { ImBooks } from "react-icons/im";
 import { BiSelectMultiple } from "react-icons/bi";
 import { IoIosAlbums } from "react-icons/io";
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
 
     // const isAdmin = false;
-    // const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin();
     // console.log("is Admin state : ", isAdmin);
-    const isUser = true;
-    const isInstructor = false;
+    const [isInstructor] = useInstructor();
 
     return (
         <div className="drawer drawer-mobile md:drawer-open">
@@ -24,7 +24,11 @@ const Dashboard = () => {
 
             </div>
             <div className="drawer-side bg-violet-300 pt-10">
-            <div className="divider">{isAdmin && "Admin"} {isInstructor && "Instructor"} {isUser && "User"} Dashboard</div>
+            <div className="divider">{
+                isAdmin? "Admin":
+                isInstructor? "Instructor":
+                "User"
+            } Dashboard</div>
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
 
@@ -44,7 +48,7 @@ const Dashboard = () => {
                         <>
                             <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/my-enrolled-classes"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                             
                         </>
                     }
