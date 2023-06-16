@@ -17,11 +17,13 @@ import PaymentHistory from "../pages/Dashboard/Users/Pyaments/PaymentHistory";
 import FeedbackPage from "../pages/Dashboard/ManageClasses/FeedbackPage";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path: '/',
