@@ -68,10 +68,6 @@ const AllClassesCard = ({ Class }) => {
     return (
         <div className="card card-compact bg-base-100 shadow-xl relative">
             <figure><img src={classImageURL}  /></figure>
-            <Fade 
-            direction='down'
-            duration={1000}
-            >
             <div className="card-body">
                 <h2 className="card-title">{className}</h2>
                 <p>{instructorName}</p>
@@ -92,7 +88,6 @@ const AllClassesCard = ({ Class }) => {
                   >Enrol Now</button>
                 </div>
             </div>
-            </Fade>
         </div>
     );
 };

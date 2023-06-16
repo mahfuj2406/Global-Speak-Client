@@ -3,20 +3,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { register, handleSubmit, reset } = useForm();
     const [error, setError] = useState("");
-    // useTitle('Login');
     const { logIn, googleLogIn } = useAuth();
     // redirecting work 
     const location = useLocation();
     const navigate = useNavigate();
 
-    const from = location.state?.from?.pathname ||  '/';
-    console.log("location :" , location);
+    const from = location.state?.from?.pathname || '/';
+    console.log("location :", location);
 
-    const onSubmit = data =>{
+    const onSubmit = data => {
 
         logIn(data.email, data.password)
             .then(result => {
@@ -38,8 +38,8 @@ const Login = () => {
         googleLogIn()
             .then((res) => {
                 const user = res.user;
-                console.log(user); 
-                const newUser = { name: user.displayName? user.displayName :"", email: user.email, photoUrl: user.photoURL, role: "user" }
+                console.log(user);
+                const newUser = { name: user.displayName ? user.displayName : "", email: user.email, photoUrl: user.photoURL, role: "user" }
                 console.log("new User :", newUser);
                 fetch('https://global-speak-server-mahfuj2406.vercel.app/users', {
                     method: 'POST',
@@ -60,8 +60,8 @@ const Login = () => {
                             });
                         }
                     })
-                    console.log("from : ", from);
-                navigate(from,{ replace: true});
+                console.log("from : ", from);
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error);
@@ -71,6 +71,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Global Speak || Login</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">

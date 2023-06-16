@@ -4,43 +4,47 @@ import SectionTitle from '../../Shared/SectionTitle/SectionTitle';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet';
 
 const ManageUsers = () => {
-const [axiosSecure] = useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get('/users')
-        console.log("users",res.data);
+        console.log("users", res.data);
         return res.data;
     })
 
 
-    const roleChange = (user, role) =>{
+    const roleChange = (user, role) => {
         console.log(user._id);
-        fetch( `https://global-speak-server-mahfuj2406.vercel.app/users/admin/${user.email}`,{
+        fetch(`https://global-speak-server-mahfuj2406.vercel.app/users/admin/${user.email}`, {
             method: 'PATCH',
             body: JSON.stringify({ role }),
             headers: {
                 'Content-Type': 'application/json',
-              },
+            },
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount){
-                refetch();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: `${user.name} is now ${role}`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is now ${role}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
     return (
         <div className='container mx-auto search-page py-10'>
+            <Helmet>
+                <title>Global Speak || Manage Users</title>
+            </Helmet>
             <SectionTitle heading={"All Users"}></SectionTitle>
             <h1>Total users : {users.length}</h1>
 
@@ -66,17 +70,17 @@ const [axiosSecure] = useAxiosSecure();
                                     <td className="text-md md:text-lg">{user.email}</td>
                                     <td className="text-md md:text-lg">{user.role}</td>
                                     <td className="text-md md:text-lg text-start"> {
-                                        user.role === 'instructor' ? 
-                                        <button className="btn btn-ghost  btn-sm bg-violet-600 text-white" disabled>Make Instructor</button>
-                                        :
-                                         <button onClick={() => roleChange( user , "instructor")} className="btn btn-ghost  btn-sm bg-violet-600 text-white">Make Instructor</button>
+                                        user.role === 'instructor' ?
+                                            <button className="btn btn-ghost  btn-sm bg-violet-600 text-white" disabled>Make Instructor</button>
+                                            :
+                                            <button onClick={() => roleChange(user, "instructor")} className="btn btn-ghost  btn-sm bg-violet-600 text-white">Make Instructor</button>
                                     } </td>
 
                                     <td className="text-md md:text-lg text-start"> {
-                                        user.role === 'admin' ? 
-                                        <button className="btn btn-ghost btn-sm bg-violet-600 text-white" disabled>Make Admin</button>
-                                        :
-                                         <button onClick={() => roleChange( user , "admin")} className="btn btn-ghost btn-sm bg-violet-600 text-white">Make Admin</button>
+                                        user.role === 'admin' ?
+                                            <button className="btn btn-ghost btn-sm bg-violet-600 text-white" disabled>Make Admin</button>
+                                            :
+                                            <button onClick={() => roleChange(user, "admin")} className="btn btn-ghost btn-sm bg-violet-600 text-white">Make Admin</button>
                                     } </td>
 
                                 </tr>)

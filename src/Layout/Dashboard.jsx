@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome,FaUsers, FaWallet } from 'react-icons/fa';
+import { FaHome, FaUsers, FaWallet } from 'react-icons/fa';
 import { GiBookshelf } from "react-icons/gi";
 import { LuBookPlus } from "react-icons/lu";
 import { ImBooks } from "react-icons/im";
@@ -7,6 +7,7 @@ import { BiSelectMultiple } from "react-icons/bi";
 import { IoIosAlbums } from "react-icons/io";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
 
@@ -17,6 +18,9 @@ const Dashboard = () => {
 
     return (
         <div className="drawer drawer-mobile md:drawer-open">
+            <Helmet>
+                <title>Global Speak || Dashboard</title>
+            </Helmet>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -24,11 +28,11 @@ const Dashboard = () => {
 
             </div>
             <div className="drawer-side bg-violet-300 pt-10">
-            <div className="divider">{
-                isAdmin? "Admin":
-                isInstructor? "Instructor":
-                "User"
-            } Dashboard</div>
+                <div className="divider">{
+                    isAdmin ? "Admin" :
+                        isInstructor ? "Instructor" :
+                            "User"
+                } Dashboard</div>
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80">
 
@@ -36,21 +40,21 @@ const Dashboard = () => {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/allClasses"><GiBookshelf></GiBookshelf> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers> Manage Users</NavLink></li>
-                            
+
                         </>
-                        :
-                        isInstructor ? <>
-                            <li><NavLink to="/dashboard/addClass"><LuBookPlus></LuBookPlus> Add a Class</NavLink></li>
-                            <li><NavLink to="/dashboard/myClasses"><ImBooks></ImBooks> My Classes</NavLink></li>
-                            
-                        </>
-                        : 
-                        <>
-                            <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/my-enrolled-classes"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            
-                        </>
+                            :
+                            isInstructor ? <>
+                                <li><NavLink to="/dashboard/addClass"><LuBookPlus></LuBookPlus> Add a Class</NavLink></li>
+                                <li><NavLink to="/dashboard/myClasses"><ImBooks></ImBooks> My Classes</NavLink></li>
+
+                            </>
+                                :
+                                <>
+                                    <li><NavLink to="/dashboard/my-classes"><BiSelectMultiple></BiSelectMultiple> My Selected Classes</NavLink></li>
+                                    <li><NavLink to="/dashboard/my-enrolled-classes"><IoIosAlbums></IoIosAlbums> My Enrolled Classes</NavLink></li>
+                                    <li><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+
+                                </>
                     }
 
 

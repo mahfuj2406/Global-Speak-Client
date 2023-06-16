@@ -1,5 +1,6 @@
 import  { useEffect, useState } from 'react';
 import AllClassesCard from './AllClassesCard';
+import { Helmet } from 'react-helmet';
 
 const AllClasses = () => {
     const [classes, setClasses] = useState([]);
@@ -11,6 +12,9 @@ const AllClasses = () => {
     console.log(classes);
     return (
         <div className='w-11/12 mx-auto md:w-10/12 mt-10'>
+            <Helmet>
+        <title>Global Speak || All Classes</title>
+      </Helmet>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-2'>
             {
                 classes.map(Class =><AllClassesCard 

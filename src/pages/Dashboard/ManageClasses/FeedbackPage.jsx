@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -41,6 +42,9 @@ const FeedbackPage = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+        <title>Global Speak || Provide Feedback</title>
+      </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">

@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const image_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
 
@@ -54,9 +55,9 @@ const AddClass = () => {
     };
     return (
         <div className="w-11/12 md:w-6/12  mx-auto mt-10">
-            {/* <Helmet>
-                <title>Add Class | MartialArt</title>
-            </Helmet> */}
+            <Helmet>
+                <title>Global Speak || Add class</title>
+            </Helmet>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className=" border bg-violet-200  p-10 rounded space-y-3 shadow"

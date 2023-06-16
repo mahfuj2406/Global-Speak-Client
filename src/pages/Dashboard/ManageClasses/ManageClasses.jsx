@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link, useNavigate } from 'react-router-dom';
 import SectionTitle from '../../Shared/SectionTitle/SectionTitle';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const ManageClasses = () => {
     const navigate = useNavigate();
@@ -41,12 +42,15 @@ const ManageClasses = () => {
             })
     }
 
-    const feedbackChange = id =>{
+    const feedbackChange = id => {
         console.log("id : ", id);
         navigate(`/dashboard/feedback/${id}`);
     }
     return (
         <div className="container mx-auto search-page py-10">
+            <Helmet>
+                <title>Global Speak || Manage classes</title>
+            </Helmet>
             <div className="overflow-x-auto ">
                 <SectionTitle heading={"Manage Classes"}></SectionTitle>
                 <table className="table">
@@ -91,13 +95,13 @@ const ManageClasses = () => {
                                             <button className="btn btn-xs btn-ghost bg-green-600 hover:bg-green-800 text-white me-2" disabled>Approve</button>
                                             <button className="btn btn-xs btn-ghost bg-red-600 hover:bg-red-800 text-white me-2" disabled>Deny</button>
                                             <Link>
-                                                <button onClick={()=>feedbackChange(Class._id)}  className="btn btn-xs btn-ghost bg-violet-600 hover:bg-violet-800 text-white">Send Feedback</button>
+                                                <button onClick={() => feedbackChange(Class._id)} className="btn btn-xs btn-ghost bg-violet-600 hover:bg-violet-800 text-white">Send Feedback</button>
                                             </Link>
                                         </> :
                                             <>
                                                 <button onClick={() => classStatusChange(Class, "approved")} className="btn btn-xs btn-ghost bg-green-600 hover:bg-green-800 text-white me-2">Approve</button>
                                                 <button onClick={() => classStatusChange(Class, "denied")} className="btn btn-xs btn-ghost bg-red-600 hover:bg-red-800 text-white me-2">Deny</button>
-                                                <button onClick={()=>feedbackChange(Class._id)} className="btn btn-xs btn-ghost bg-violet-600 hover:bg-violet-800 text-white">Send Feedback</button>
+                                                <button onClick={() => feedbackChange(Class._id)} className="btn btn-xs btn-ghost bg-violet-600 hover:bg-violet-800 text-white">Send Feedback</button>
                                             </>
                                     }
                                 </td>

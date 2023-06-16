@@ -17,7 +17,7 @@ const MyEnrolledClasses = () => {
   return (
     <div className="w-full px-2 md:px-10">
       <Helmet>
-        <title>Enroll Classes | MartialArt</title>
+        <title>Global Speak || Enroll Classes</title>
       </Helmet>
       <div className="overflow-x-auto bg-base-300 p-5 my-20 rounded-lg shadow-xl">
         <table className="table table-md table-pin-rows table-pin-cols ">
