@@ -12,7 +12,7 @@ const FeedbackPage = () => {
 
         const feedbackData = { feedback: data.feedback }
         console.log(feedbackData);
-        fetch(`http://localhost:5000/feedback/${id}`, {
+        fetch(`https://global-speak-server-mahfuj2406.vercel.app/feedback/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

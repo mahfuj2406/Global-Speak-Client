@@ -4,7 +4,7 @@ import InstructorCard from './InstructorCard';
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/instructors')
+        fetch('https://global-speak-server-mahfuj2406.vercel.app/instructors')
         .then(res =>res.json())
         .then(data => setInstructors(data))
     },[])

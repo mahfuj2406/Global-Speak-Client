@@ -41,7 +41,7 @@ const AuthProvider = ({children}) => {
             // get and set Token using jwt 
 
             if(currentUser){
-                axios.post('http://localhost:5000/jwt',{email: currentUser.email})
+                axios.post('https://global-speak-server-mahfuj2406.vercel.app/jwt',{email: currentUser.email})
                 .then(data =>{
                     // console.log(data.data)
                     localStorage.setItem('access-token', data.data.token) 

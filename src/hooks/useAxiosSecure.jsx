@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://global-speak-server-mahfuj2406.vercel.app',
 });
 
 const useAxiosSecure = () => {

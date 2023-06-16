@@ -17,7 +17,7 @@ const [axiosSecure] = useAxiosSecure();
 
     const roleChange = (user, role) =>{
         console.log(user._id);
-        fetch( `http://localhost:5000/users/admin/${user.email}`,{
+        fetch( `https://global-speak-server-mahfuj2406.vercel.app/users/admin/${user.email}`,{
             method: 'PATCH',
             body: JSON.stringify({ role }),
             headers: {

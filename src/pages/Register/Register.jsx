@@ -21,7 +21,7 @@ const Register = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const newUser = { name: data.name, email: data.email, photoURL: data.photoURL, role: "user" }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://global-speak-server-mahfuj2406.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

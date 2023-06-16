@@ -18,7 +18,7 @@ const ManageClasses = () => {
 
     const classStatusChange = (Class, Status) => {
         console.log(Class._id);
-        fetch(`http://localhost:5000/class-status/${Class._id}`, {
+        fetch(`https://global-speak-server-mahfuj2406.vercel.app/class-status/${Class._id}`, {
             method: 'PATCH',
             body: JSON.stringify({ Status }),
             headers: {
