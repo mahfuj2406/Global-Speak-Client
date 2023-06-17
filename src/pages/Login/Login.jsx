@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const [error, setError] = useState("");
     const { logIn, googleLogIn } = useAuth();
@@ -32,7 +33,7 @@ const Login = () => {
 
     }
 
-
+    const handlePasswordVisibility = () => { setPasswordVisible(!passwordVisible); };
     // google log in managed here
     const handleGoogleLogIn = () => {
         googleLogIn()
@@ -89,7 +90,8 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" required />
+                                <input type={passwordVisible ? 'text' : 'password'} {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" required />
+                                <span className="cursor-pointer text-blue-300" onClick={handlePasswordVisibility}> {passwordVisible ? 'Hide' : 'Show'} </span>
                             </div>
                             <div className="form-control mt-6 ">
                                 <button type="submit" className="btn bg-violet-300 border-0 hover:border hover:bg-violet-600 hover:text-white">Login</button>
